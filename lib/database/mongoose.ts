@@ -16,6 +16,7 @@ if (!cached) {
 
 export const connectToDatabase = async () => {
   if (cached.conn) {
+    console.log("Using existing MongoDB connection");
     return cached.conn;
   }
 
@@ -28,5 +29,7 @@ export const connectToDatabase = async () => {
     mongoose.connect(MONGODB_URL, { dbName: "genpic", bufferCommands: false });
 
   cached.conn = await cached.promise;
+
+  console.log("MongoDB connection established successfully");
   return cached.conn;
 };
