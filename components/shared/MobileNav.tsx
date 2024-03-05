@@ -7,8 +7,6 @@ import Image from "next/image";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
 import { navLinks } from "@/constants";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
