@@ -16,7 +16,6 @@ if (!cached) {
 
 export const connectToDatabase = async () => {
   if (cached.conn) {
-    console.log("Using existing MongoDB connection");
     return cached.conn;
   }
 
@@ -30,6 +29,5 @@ export const connectToDatabase = async () => {
 
   cached.conn = await cached.promise;
 
-  console.log("MongoDB connection established successfully");
   return cached.conn;
 };
