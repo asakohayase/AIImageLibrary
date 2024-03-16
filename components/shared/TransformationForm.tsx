@@ -108,10 +108,15 @@ const TransformationForm = ({
 
   const onTransformHandler = async () => {
     setIsTransforming(true);
-    setTransformationsConfig(deepMergeObjects(newTransformation, image));
+
+    setTransformationsConfig(
+      deepMergeObjects(newTransformation, transformationsConfig)
+    );
     setNewTransformation(null);
-    // startTransition(async()=>
-    // await updateCredits(userId, creditFee);)
+
+    startTransition(() => {
+      updateCredits(userId, creditFee);
+    });
   };
 
   const form = useForm<z.infer<typeof formSchema>>({
