@@ -1,5 +1,5 @@
 "use client";
-import React, { startTransition, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { getCldImageUrl } from "next-cloudinary";
@@ -32,6 +32,7 @@ import {
   addImage,
   updateImage,
 } from "@/lib/database/models/actions/image.actions";
+import { InsufficientCreditsModal } from "./InsufficientCreditsModal";
 
 export const formSchema = z.object({
   title: z.string(),
@@ -187,9 +188,16 @@ const TransformationForm = ({
     setIsSubmitting(false);
   }
 
+  useEffect(() => {
+    if (image && (type === "restore" || type === "removeBackground")) {
+      setNewTransformation(transformationType.config);
+    }
+  }, [image, transformationType.config, type]);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
         <CustomField
           control={form.control}
           name="title"
