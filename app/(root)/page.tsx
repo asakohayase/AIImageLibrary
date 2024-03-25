@@ -2,8 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { navLinks } from "@/constants";
+import { SearchParamProps } from "@/types";
+import { getAllImages } from "@/lib/database/actions/image.actions";
+import { Collection } from "@/components/shared/Collection";
 
-const Home = () => {
+const Home = async ({ searchParams }: SearchParamProps) => {
+  const page = Number(searchParams.page) || 1;
+  const searchQuery = (searchParams.searchQuery as string) || "";
+  const images = await getAllImages({ page, searchQuery });
   return (
     <>
       <section className="home">
@@ -30,6 +36,14 @@ const Home = () => {
             </Link>
           ))}
         </ul>
+      </section>
+      <section className="sm:mt-12">
+        <Collection
+          hasSearch={true}
+          images={images?.data}
+          totalPages={images?.totalPage}
+          page={page}
+        />
       </section>
     </>
   );
