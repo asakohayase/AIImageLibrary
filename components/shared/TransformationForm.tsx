@@ -25,13 +25,10 @@ import {
 import { CustomField } from "./CustomField";
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils";
 import { TransformationFormProps, Transformations } from "@/types";
-import { updateCredits } from "@/lib/database/models/actions/user.actions";
+import { updateCredits } from "@/lib/database/actions/user.actions";
 import MediaUploader from "./MediaUploader";
 import TransformedImage from "./TransformedImage";
-import {
-  addImage,
-  updateImage,
-} from "@/lib/database/models/actions/image.actions";
+import { addImage, updateImage } from "@/lib/database/actions/image.actions";
 import { InsufficientCreditsModal } from "./InsufficientCreditsModal";
 
 export const formSchema = z.object({

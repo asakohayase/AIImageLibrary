@@ -2,10 +2,10 @@
 
 import { handleError } from "@/lib/utils";
 import { AddImageParams, UpdateImageParams } from "@/types";
-import { connectToDatabase } from "../../mongoose";
+import { connectToDatabase } from "../mongoose";
 import { revalidatePath } from "next/cache";
-import User from "../user.model";
-import Image from "../image.model";
+import User from "../models/user.model";
+import Image from "../models/image.model";
 import { redirect } from "next/navigation";
 import path from "path";
 
