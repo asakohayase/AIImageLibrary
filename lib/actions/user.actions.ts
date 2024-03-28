@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 
 import { handleError } from "@/lib/utils";
-import { connectToDatabase } from "../mongoose";
-import User from "../models/user.model";
+import { connectToDatabase } from "../database/mongoose";
+import User from "../database/models/user.model";
 import { CreateUserParams, UpdateUserParams } from "@/types";
 
 // CREATE

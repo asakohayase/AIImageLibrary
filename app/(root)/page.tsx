@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { navLinks } from "@/constants";
 import { SearchParamProps } from "@/types";
-import { getAllImages } from "@/lib/database/actions/image.actions";
+import { getAllImages } from "@/lib/actions/image.actions";
 import { Collection } from "@/components/shared/Collection";
 
 const Home = async ({ searchParams }: SearchParamProps) => {

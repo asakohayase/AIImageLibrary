@@ -25,11 +25,11 @@ import {
 import { CustomField } from "./CustomField";
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils";
 import { TransformationFormProps, Transformations } from "@/types";
-import { updateCredits } from "@/lib/database/actions/user.actions";
 import MediaUploader from "./MediaUploader";
 import TransformedImage from "./TransformedImage";
-import { addImage, updateImage } from "@/lib/database/actions/image.actions";
 import { InsufficientCreditsModal } from "./InsufficientCreditsModal";
+import { addImage, updateImage } from "@/lib/actions/image.actions";
+import { updateCredits } from "@/lib/actions/user.actions";
 
 export const formSchema = z.object({
   title: z.string(),
@@ -81,9 +81,10 @@ const TransformationForm = ({
       height: imageSize.height,
     }));
 
-    setNewTransformation(transformationType.config);
-    console.log("newTransformation", newTransformation);
+    console.log("publicId", image?.publicId);
     console.log("image", image);
+
+    setNewTransformation(transformationType.config);
 
     return onChangeField(value);
   };
@@ -102,7 +103,8 @@ const TransformationForm = ({
           [fieldName === "prompt" ? "prompt" : "to"]: value,
         },
       }));
-    }, 1000);
+    }, 1000)();
+    return onChangeField(value);
   };
 
   const onTransformHandler = async () => {
