@@ -81,9 +81,10 @@ const TransformationForm = ({
       height: imageSize.height,
     }));
 
-    setNewTransformation(transformationType.config);
-    console.log("newTransformation", newTransformation);
+    console.log("publicId", image?.publicId);
     console.log("image", image);
+
+    setNewTransformation(transformationType.config);
 
     return onChangeField(value);
   };
@@ -102,7 +103,8 @@ const TransformationForm = ({
           [fieldName === "prompt" ? "prompt" : "to"]: value,
         },
       }));
-    }, 1000);
+    }, 1000)();
+    return onChangeField(value);
   };
 
   const onTransformHandler = async () => {
