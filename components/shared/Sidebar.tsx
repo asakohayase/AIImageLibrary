@@ -32,7 +32,7 @@ const Sidebar = () => {
                 return (
                   <li
                     key={link.route}
-                    className={clsx("sidebar-nav-element group", {
+                    className={clsx("sidebar-nav_element group", {
                       "bg-purple-gradient": isActive,
                       "text-white": isActive,
                       "text-grey-700": !isActive,
@@ -59,7 +59,7 @@ const Sidebar = () => {
                 return (
                   <li
                     key={link.route}
-                    className={clsx("sidebar-nav-element group", {
+                    className={clsx("sidebar-nav_element group", {
                       "bg-purple-gradient": isActive,
                       "text-white": isActive,
                       "text-grey-700": !isActive,
@@ -72,7 +72,7 @@ const Sidebar = () => {
                         width={24}
                         height={24}
                         className={`${isActive && "brightness-200"}`}
-                      />{" "}
+                      />
                       {link.label}
                     </Link>
                   </li>
